@@ -1,21 +1,34 @@
 import { Drawer, Toolbar, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import { NavLink } from "react-router-dom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import GroupIcon from "@mui/icons-material/Group";
+import { useAuth } from "../../context/AuthContext";
 
-const navItems = [
-  { label: "Dashboard", icon: <DashboardIcon />, path: "/" },
-  { label: "Customers", icon: <PeopleIcon />, path: "/customers" },
-  { label: "Deals", icon: <BusinessCenterIcon />, path: "/deals" },
+const ALL_NAV_ITEMS = [
+  { label: "Dashboard", icon: <DashboardIcon />, path: "/", roles: null },
+  { label: "Customers", icon: <PeopleIcon />, path: "/customers", roles: null },
+  { label: "Deals", icon: <BusinessCenterIcon />, path: "/deals", roles: null },
+  {
+    label: "Users", icon: <GroupIcon />, path: "/users",
+    roles: ["SUPER_ADMIN", "ADMIN"],
+  },
 ];
 
 export default function Sidebar({ drawerWidth, mobileOpen, onClose }) {
+  const { user } = useAuth();
+
+  const visibleItems = ALL_NAV_ITEMS.filter(
+    (item) => !item.roles || item.roles.includes(user?.role)
+  );
+
   const drawerContent = (
     <>
       <Toolbar />
       <List>
-        {navItems.map((item) => (
-          <ListItemButton key={item.label}>
+        {visibleItems.map((item) => (
+          <ListItemButton key={item.label} component={NavLink} to={item.path}>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.label} />
           </ListItemButton>
