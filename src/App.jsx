@@ -8,6 +8,8 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import UserList from "./pages/users/UserList";
 import UserForm from "./pages/users/UserForm";
+import TeamList from "./pages/teams/TeamList";
+import OrganizationSettings from "./pages/settings/OrganizationSettings";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
               <Route path="users" element={<UserList />} />
               <Route path="users/new" element={<UserForm />} />
               <Route path="users/:id/edit" element={<UserForm />} />
+              <Route path="teams" element={<TeamList />} />
+              <Route path="settings" element={<OrganizationSettings />} />
             </Route>
           </Route>
         </Route>
