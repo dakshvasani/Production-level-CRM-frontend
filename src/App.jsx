@@ -10,6 +10,9 @@ import UserList from "./pages/users/UserList";
 import UserForm from "./pages/users/UserForm";
 import TeamList from "./pages/teams/TeamList";
 import OrganizationSettings from "./pages/settings/OrganizationSettings";
+import CustomerList from "./pages/customers/CustomerList";
+import CustomerForm from "./pages/customers/CustomerForm";
+import CustomerDetail from "./pages/customers/CustomerDetail";
 
 function App() {
   return (
@@ -21,6 +24,11 @@ function App() {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="profile" element={<Profile />} />
+
+            <Route path="customers" element={<CustomerList />} />
+            <Route path="customers/new" element={<CustomerForm />} />
+            <Route path="customers/:id" element={<CustomerDetail />} />
+            <Route path="customers/:id/edit" element={<CustomerForm />} />
 
             <Route element={<RoleGuard allowedRoles={["SUPER_ADMIN", "ADMIN"]} />}>
               <Route path="users" element={<UserList />} />
