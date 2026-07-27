@@ -11,6 +11,7 @@ import { useAuth } from "../../context/AuthContext";
 const ALL_NAV_ITEMS = [
   { label: "Dashboard", icon: <DashboardIcon />, path: "/", roles: null },
   { label: "Customers", icon: <PeopleIcon />, path: "/customers", roles: null },
+  { label: "Leads", icon: <PeopleIcon />, path: "/leads", roles: null },
   { label: "Deals", icon: <BusinessCenterIcon />, path: "/deals", roles: null },
   { label: "Users", icon: <GroupIcon />, path: "/users", roles: ["SUPER_ADMIN", "ADMIN"] },
   { label: "Teams", icon: <GroupsIcon />, path: "/teams", roles: ["SUPER_ADMIN", "ADMIN"] },
