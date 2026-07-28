@@ -15,6 +15,8 @@ import CustomerForm from "./pages/customers/CustomerForm";
 import CustomerDetail from "./pages/customers/CustomerDetail";
 import LeadList from "./pages/leads/LeadList";
 import LeadForm from "./pages/leads/LeadForm";
+import PipelineBoard from "./pages/deals/PipelineBoard";
+import DealForm from "./pages/deals/DealForm";
 
 function App() {
   return (
@@ -35,6 +37,10 @@ function App() {
             <Route path="customers/new" element={<CustomerForm />} />
             <Route path="customers/:id" element={<CustomerDetail />} />
             <Route path="customers/:id/edit" element={<CustomerForm />} />
+
+            <Route path="deals" element={<PipelineBoard />} />
+            <Route path="deals/new" element={<DealForm />} />
+            <Route path="deals/:id/edit" element={<DealForm />} />
 
             <Route element={<RoleGuard allowedRoles={["SUPER_ADMIN", "ADMIN"]} />}>
               <Route path="users" element={<UserList />} />
