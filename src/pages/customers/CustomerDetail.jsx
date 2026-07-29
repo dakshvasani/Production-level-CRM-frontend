@@ -4,6 +4,7 @@ import {
   Paper, Typography, Grid, Chip, Button, Box, Divider,
 } from "@mui/material";
 import * as customerService from "../../services/customerService";
+import TimelineView from "../../components/timeline/TimelineView";
 
 export default function CustomerDetail() {
   const { id } = useParams();
@@ -28,42 +29,44 @@ export default function CustomerDetail() {
   ];
 
   return (
-    <Paper sx={{ p: 4 }}>
-      <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
-        <Typography variant="h5">{customer.company_name}</Typography>
-        <Button variant="outlined" onClick={() => navigate(`/customers/${id}/edit`)}>
-          Edit
-        </Button>
-      </Box>
+    <Box sx={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
+      <Paper sx={{ p: 4, flex: "1 1 400px" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
+          <Typography variant="h5">{customer.company_name}</Typography>
+          <Button variant="outlined" onClick={() => navigate(`/customers/${id}/edit`)}>
+            Edit
+          </Button>
+        </Box>
 
-      <Box sx={{ mb: 2 }}>
-        {customer.tag_names?.map((t) => (
-          <Chip key={t} label={t} size="small" sx={{ mr: 0.5 }} />
-        ))}
-      </Box>
+        <Box sx={{ mb: 2 }}>
+          {customer.tag_names?.map((t) => (
+            <Chip key={t} label={t} size="small" sx={{ mr: 0.5 }} />
+          ))}
+        </Box>
 
-      <Divider sx={{ mb: 2 }} />
+        <Divider sx={{ mb: 2 }} />
 
-      <Grid container spacing={2}>
-        {fields.map(([label, value]) => (
-          <Grid item xs={12} sm={6} key={label}>
-            <Typography variant="caption" color="text.secondary">{label}</Typography>
-            <Typography variant="body1">{value}</Typography>
-          </Grid>
-        ))}
-      </Grid>
+        <Grid container spacing={2}>
+          {fields.map(([label, value]) => (
+            <Grid item xs={12} sm={6} key={label}>
+              <Typography variant="caption" color="text.secondary">{label}</Typography>
+              <Typography variant="body1">{value}</Typography>
+            </Grid>
+          ))}
+        </Grid>
 
-      {customer.notes && (
-        <>
-          <Divider sx={{ my: 2 }} />
-          <Typography variant="caption" color="text.secondary">Notes</Typography>
-          <Typography variant="body2">{customer.notes}</Typography>
-        </>
-      )}
+        {customer.notes && (
+          <>
+            <Divider sx={{ my: 2 }} />
+            <Typography variant="caption" color="text.secondary">Notes</Typography>
+            <Typography variant="body2">{customer.notes}</Typography>
+          </>
+        )}
+      </Paper>
 
-      <Typography variant="caption" color="text.secondary" sx={{ mt: 3, display: "block" }}>
-        Full activity timeline, rich notes, and attachments arrive on Day 8.
-      </Typography>
-    </Paper>
+      <Paper sx={{ p: 3, flex: "1 1 400px" }}>
+        <TimelineView targetType="customer" targetId={customer.id} />
+      </Paper>
+    </Box>
   );
 }
