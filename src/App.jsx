@@ -17,6 +17,9 @@ import LeadList from "./pages/leads/LeadList";
 import LeadForm from "./pages/leads/LeadForm";
 import PipelineBoard from "./pages/deals/PipelineBoard";
 import DealForm from "./pages/deals/DealForm";
+import TaskBoard from "./pages/tasks/TaskBoard";
+import TaskForm from "./pages/tasks/TaskForm";
+import CalendarPage from "./pages/calendar/CalendarPage";
 
 function App() {
   return (
@@ -41,6 +44,10 @@ function App() {
             <Route path="deals" element={<PipelineBoard />} />
             <Route path="deals/new" element={<DealForm />} />
             <Route path="deals/:id/edit" element={<DealForm />} />
+
+            <Route path="tasks" element={<TaskBoard />} />
+            <Route path="tasks/new" element={<TaskForm />} />
+            <Route path="calendar" element={<CalendarPage />} />
 
             <Route element={<RoleGuard allowedRoles={["SUPER_ADMIN", "ADMIN"]} />}>
               <Route path="users" element={<UserList />} />
