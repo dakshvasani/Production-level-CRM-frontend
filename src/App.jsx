@@ -20,6 +20,7 @@ import DealForm from "./pages/deals/DealForm";
 import TaskBoard from "./pages/tasks/TaskBoard";
 import TaskForm from "./pages/tasks/TaskForm";
 import CalendarPage from "./pages/calendar/CalendarPage";
+import ReportsPage from "./pages/reports/ReportsPage";
 
 function App() {
   return (
@@ -48,6 +49,8 @@ function App() {
             <Route path="tasks" element={<TaskBoard />} />
             <Route path="tasks/new" element={<TaskForm />} />
             <Route path="calendar" element={<CalendarPage />} />
+
+            <Route path="reports" element={<ReportsPage />} />
 
             <Route element={<RoleGuard allowedRoles={["SUPER_ADMIN", "ADMIN"]} />}>
               <Route path="users" element={<UserList />} />

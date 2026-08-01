@@ -9,6 +9,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { useAuth } from "../../context/AuthContext";
+import AssessmentIcon from "@mui/icons-material/Assessment";
 
 const ALL_NAV_ITEMS = [
   { label: "Dashboard", icon: <DashboardIcon />, path: "/", roles: null },
@@ -17,6 +18,7 @@ const ALL_NAV_ITEMS = [
   { label: "Deals", icon: <BusinessCenterIcon />, path: "/deals", roles: null },
   { label: "Tasks", icon: <AssignmentIcon />, path: "/tasks", roles: null },
   { label: "Calendar", icon: <CalendarMonthIcon />, path: "/calendar", roles: null },
+  { label: "Reports", icon: <AssessmentIcon />, path: "/reports", roles: null },
   { label: "Users", icon: <GroupIcon />, path: "/users", roles: ["SUPER_ADMIN", "ADMIN"] },
   { label: "Teams", icon: <GroupsIcon />, path: "/teams", roles: ["SUPER_ADMIN", "ADMIN"] },
   { label: "Settings", icon: <SettingsIcon />, path: "/settings", roles: ["SUPER_ADMIN", "ADMIN"] },
