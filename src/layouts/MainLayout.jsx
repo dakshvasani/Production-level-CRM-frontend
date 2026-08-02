@@ -21,6 +21,9 @@ export default function MainLayout() {
         component="main"
         sx={{
           flexGrow: 1,
+          minWidth: 0,          // <-- lets this flex item shrink instead of overflowing under the sidebar
+          maxWidth: "100%",
+          overflowX: "hidden",  // <-- any inner scrollable content (Kanban, Calendar) scrolls itself, not the page
           p: 3,
           width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` },
         }}

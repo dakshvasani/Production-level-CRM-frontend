@@ -36,7 +36,7 @@ export default function Dashboard() {
   const { cards, funnel, monthly_revenue, lead_sources, team_performance, win_ratio } = data;
 
   return (
-    <Box>
+    <Box sx={{ width: "100%", overflowX: "hidden" }}>
       {/* KPI cards */}
       <Grid container spacing={2} sx={{ mb: 3 }}>
         <Grid item xs={6} sm={4} md={2}><KpiCard label="Revenue" value={cards.revenue.toLocaleString()} prefix="$" /></Grid>

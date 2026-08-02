@@ -21,6 +21,7 @@ import TaskBoard from "./pages/tasks/TaskBoard";
 import TaskForm from "./pages/tasks/TaskForm";
 import CalendarPage from "./pages/calendar/CalendarPage";
 import ReportsPage from "./pages/reports/ReportsPage";
+import AuditLogViewer from "./pages/audit/AuditLogViewer";
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
               <Route path="users/:id/edit" element={<UserForm />} />
               <Route path="teams" element={<TeamList />} />
               <Route path="settings" element={<OrganizationSettings />} />
+              <Route path="audit-log" element={<AuditLogViewer />} />
             </Route>
           </Route>
         </Route>

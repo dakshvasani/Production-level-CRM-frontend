@@ -1,0 +1,10 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* page can never scroll sideways — inner elements (Kanban, Calendar) still scroll themselves */
+}
+
+* {
+  box-sizing: border-box;
+}
