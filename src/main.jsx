@@ -5,9 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "./theme";
 import App from "./App";
+import "./index.css";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 import { SnackbarProvider } from "./context/SnackbarContext";
-import "./index.css";
 
 const queryClient = new QueryClient({
   defaultOptions: {

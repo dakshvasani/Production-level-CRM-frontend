@@ -23,6 +23,23 @@ const processQueue = (error, token = null) => {
   pendingRequests = [];
 };
 
+function dispatchApiError(message) {
+  window.dispatchEvent(new CustomEvent("api-error", { detail: { message } }));
+}
+
+function extractErrorMessage(error) {
+  const data = error.response?.data;
+  if (!data) return "Network error. Please check your connection.";
+  if (data.errors) {
+    if (typeof data.errors === "string") return data.errors;
+    if (data.errors.detail) return data.errors.detail;
+    const firstKey = Object.keys(data.errors)[0];
+    const firstVal = data.errors[firstKey];
+    return Array.isArray(firstVal) ? firstVal[0] : String(firstVal);
+  }
+  return "Something went wrong. Please try again.";
+}
+
 axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
@@ -61,6 +78,11 @@ axiosInstance.interceptors.response.use(
       } finally {
         isRefreshing = false;
       }
+    }
+
+    // Don't spam a toast for expected 401s that are about to redirect to login.
+    if (error.response?.status !== 401) {
+      dispatchApiError(extractErrorMessage(error));
     }
 
     return Promise.reject(error);

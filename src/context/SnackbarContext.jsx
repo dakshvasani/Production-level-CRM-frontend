@@ -10,6 +10,8 @@ export function SnackbarProvider({ children }) {
     setState({ open: true, message, severity });
   }, []);
 
+  // Listen for global API errors dispatched from the axios interceptor
+  // (interceptors run outside React, so we bridge via a DOM CustomEvent).
   useEffect(() => {
     const handler = (e) => showSnackbar(e.detail.message, "error");
     window.addEventListener("api-error", handler);

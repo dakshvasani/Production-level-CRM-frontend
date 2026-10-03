@@ -60,7 +60,12 @@ export default function Sidebar({ drawerWidth, mobileOpen, onClose }) {
       </Drawer>
       <Drawer
         variant="permanent"
-        sx={{ display: { xs: "none", sm: "block" }, "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth } }}
+        sx={{
+          display: { xs: "none", sm: "block" },
+          width: drawerWidth,
+          flexShrink: 0,
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
+        }}
         open
       >
         {drawerContent}

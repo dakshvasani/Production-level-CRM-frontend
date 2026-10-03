@@ -28,3 +28,8 @@ export const fetchTags = async () => {
   const { data } = await axiosInstance.get("/tags/");
   return data;
 };
+
+export const createTag = async (payload) => {
+  const { data } = await axiosInstance.post("/tags/", payload);
+  return data;
+};
