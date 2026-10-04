@@ -58,19 +58,20 @@ export default function LeadForm() {
       <Box component="form" onSubmit={handleSubmit((data) => mutation.mutate(data))}>
         <TextField
           fullWidth label="Name" margin="normal"
+          InputLabelProps={{ shrink: true }}
           {...register("name", { required: "Name is required" })}
           error={!!errors.name}
           helperText={errors.name?.message}
         />
-        <TextField fullWidth label="Email" margin="normal" {...register("email")} />
-        <TextField fullWidth label="Phone" margin="normal" {...register("phone")} />
-        <TextField fullWidth label="Company Name" margin="normal" {...register("company_name")} />
+        <TextField fullWidth InputLabelProps={{ shrink: true }} label="Email" margin="normal" {...register("email")} />
+        <TextField fullWidth InputLabelProps={{ shrink: true }} label="Phone" margin="normal" {...register("phone")} />
+        <TextField fullWidth InputLabelProps={{ shrink: true }} label="Company Name" margin="normal" {...register("company_name")} />
 
         <Controller
           name="source"
           control={control}
           render={({ field }) => (
-            <TextField {...field} select fullWidth label="Lead Source" margin="normal">
+            <TextField InputLabelProps={{ shrink: true }} {...field} select fullWidth label="Lead Source" margin="normal">
               <MenuItem value="">None</MenuItem>
               {sources?.results?.map((s) => (
                 <MenuItem key={s.id} value={s.id}>{s.name}</MenuItem>
@@ -83,7 +84,7 @@ export default function LeadForm() {
           name="status"
           control={control}
           render={({ field }) => (
-            <TextField {...field} select fullWidth label="Status" margin="normal">
+            <TextField {...field} select fullWidth label="Status" margin="normal" InputLabelProps={{ shrink: true }}>
               {STATUSES.map((s) => <MenuItem key={s} value={s}>{s}</MenuItem>)}
             </TextField>
           )}
@@ -98,7 +99,7 @@ export default function LeadForm() {
           )}
         />
 
-        <TextField fullWidth label="Notes" margin="normal" multiline rows={3} {...register("notes")} />
+        <TextField InputLabelProps={{ shrink: true }} fullWidth label="Notes" margin="normal" multiline rows={3} {...register("notes")} />
 
         <Button type="submit" variant="contained" sx={{ mt: 2 }} disabled={mutation.isPending}>
           {mutation.isPending ? "Saving..." : "Save Lead"}

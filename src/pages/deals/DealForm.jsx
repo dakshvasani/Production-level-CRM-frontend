@@ -54,7 +54,7 @@ export default function DealForm() {
 
       <Box component="form" onSubmit={handleSubmit((data) => mutation.mutate(data))}>
         <TextField
-          fullWidth label="Deal Title" margin="normal"
+          fullWidth label="Deal Title" margin="normal" InputLabelProps={{ shrink: true }}
           {...register("title", { required: "Title is required" })}
           error={!!errors.title}
           helperText={errors.title?.message}
@@ -64,7 +64,7 @@ export default function DealForm() {
           name="customer"
           control={control}
           render={({ field }) => (
-            <TextField {...field} select fullWidth label="Customer" margin="normal">
+            <TextField {...field} value={field.value || ""} select fullWidth label="Customer" margin="normal">
               <MenuItem value="">None</MenuItem>
               {customers?.results?.map((c) => (
                 <MenuItem key={c.id} value={c.id}>{c.company_name}</MenuItem>
@@ -77,7 +77,7 @@ export default function DealForm() {
           name="stage"
           control={control}
           render={({ field }) => (
-            <TextField {...field} select fullWidth label="Stage" margin="normal">
+            <TextField {...field} value={field.value || ""} select fullWidth label="Stage" margin="normal">
               {stages?.results?.map((s) => (
                 <MenuItem key={s.id} value={s.id}>{s.name}</MenuItem>
               ))}
